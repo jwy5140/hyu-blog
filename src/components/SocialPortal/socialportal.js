@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { Affix, Icon } from 'antd'
 import RVS from 'react-visibility-sensor'
 
-const SocialPortal = () => {
+const SocialPortal = (props) => {
     
     const [visible, setVisible] = useState(false)
 
-    return <Affix offsetTop={window.innerHeight*.9/2}>
+    return <Affix offsetTop={typeof window !== 'undefined' ? window.innerHeight*.9/2 : null}>
         <div className="social-portal">
             <li>
                 <a href="https://www.linkedin.com/in/psujeffreyyu/" target="_blank">
@@ -33,8 +33,13 @@ const SocialPortal = () => {
             li {
                 list-style-type: none;
                 opacity: ${visible ? 1 : 0};
-                transition: opacity 1500ms ease-in-out;
+                transition: opacity 1.5s ease-in-out;
             }   
+            @media only screen and (max-width: 600px) {
+                div {
+                    display: none;
+                }
+            }
         `}</style>
     </Affix>
 }
