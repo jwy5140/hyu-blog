@@ -8,11 +8,11 @@ const SocialPortal = (props) => {
 
     return <Affix offsetTop={typeof window !== 'undefined' ? window.innerHeight*.9/2 : null}>
         <div className="social-portal">
-            <li>
+            {/* <li>
                 <a href="https://www.linkedin.com/in/psujeffreyyu/" target="_blank">
                     <Icon type="linkedin" style={{fontSize: "7.5vh", color: "#2867B2"}}/>
                 </a>
-            </li>
+            </li> */}
             <RVS onChange={(v)=>setVisible(v)}>
                 <li>
                     <a href="https://github.com/jwy5140" target="_blank">
