@@ -29,20 +29,21 @@ const Item = props => {
             <Img fluid={fluid} />
           </div>
           <h1>
-            {title} <FaArrowRight className="arrow" />
+            {title} 
+             {/* <FaArrowRight className="arrow" /> */}
           </h1>
           <p className="meta">
-            <span>
+            {/* <span>
               <FaCalendar size={18} /> {prefix}
-            </span>
-            <span>
+            </span> */}
+            {/* <span>
               <FaUser size={18} /> {author}
-            </span>
-            {category && (
+            </span> */}
+            {/* {category && (
               <span>
                 <FaTag size={18} /> {category}
               </span>
-            )}
+            )} */}
           </p>
           <p>{excerpt}</p>
         </Link>

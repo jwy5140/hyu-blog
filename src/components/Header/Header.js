@@ -2,8 +2,6 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 import VisibilitySensor from "react-visibility-sensor";
-import { Icon } from 'antd'
-import { FaLightbulb } from 'react-icons/fa';
 
 import { ScreenWidthContext, FontLoadedContext } from "../../layouts";
 import config from "../../../content/meta/config";
@@ -39,12 +37,12 @@ class Header extends React.Component {
       <React.Fragment>
         <header className={`header ${this.getHeaderSize()}`}>
           <Link to="/" className="logoType">
-            <div className="logo">
-              <img src={config.gravatarImgMd5=="" ? avatar : config.gravatarImgMd5 } alt={config.siteTitle} />
-            </div>
+            {/* <div className="logo"> */}
+              {/* <img src={config.gravatarImgMd5=="" ? avatar : config.gravatarImgMd5 } alt={config.siteTitle} /> */}
+            {/* </div> */}
             <div className="type">
               <h1>{config.headerTitle}</h1>
-              <h2>{config.headerSubTitle}</h2>
+              {/* <h2>{config.headerSubTitle}</h2> */}
             </div>
           </Link>
           <FontLoadedContext.Consumer>

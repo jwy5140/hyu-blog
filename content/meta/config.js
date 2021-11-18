@@ -1,6 +1,6 @@
 module.exports = {
-  siteTitle: "Jeffrey Yu", // <title>
-  shortSiteTitle: "Jeffrey Yu", // <title> ending for posts and pages
+  siteTitle: "Hana Yu", // <title>
+  shortSiteTitle: "Hana Yu", // <title> ending for posts and pages
   siteDescription: "A student and developer's personal blog.",
   siteUrl: "https://jayewe.com",
   // pathPrefix: "",
@@ -8,16 +8,16 @@ module.exports = {
   siteLanguage: "en",
 
   /* author */
-  authorName: "Jeffrey Yu",
+  authorName: "Hana Yu",
   authorTwitterAccount: "jwy5140",
 
   /* info */
-  headerTitle: "Jeffrey Yu",
+  headerTitle: "Hana Yu",
   headerSubTitle: "learn. create. conquer.",
 
   /* manifest.json */
-  manifestName: "Jeffrey Yu's Personal Website",
-  manifestShortName: "Jeff Yu's Site", // max 12 characters
+  manifestName: "Hana's Personal Website",
+  manifestShortName: "Hana's Site", // max 12 characters
   manifestStartUrl: "/index.html",
   manifestBackgroundColor: "white",
   manifestThemeColor: "#666",
