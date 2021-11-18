@@ -50,7 +50,7 @@ class IndexPage extends React.Component {
 
         <hr ref={this.separator} />
 
-        <SocialPortal />
+        {/* <SocialPortal /> */}
 
         <ThemeContext.Consumer>
           {theme => <Blog posts={posts} theme={theme} />}
