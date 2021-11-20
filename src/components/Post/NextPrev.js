@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
+import styled from 'styled-components';
 
 import { FaArrowRight } from "react-icons/fa/";
 import { FaArrowLeft } from "react-icons/fa/";
@@ -59,7 +60,7 @@ const NextPrev = props => {
       }
     }
 
-    @media (hover: hover){
+    &:hover{
       :global(a:hover svg) {
         transform: scale(1.5);
       }

@@ -2,6 +2,7 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React from "react";
 import VisibilitySensor from "react-visibility-sensor";
+import styled from "styled-components";
 
 import { ScreenWidthContext, FontLoadedContext } from "../../layouts";
 import config from "../../../content/meta/config";
@@ -9,7 +10,7 @@ import Menu from "../Menu";
 
 import avatar from "../../images/jpg/avatar.jpg";
 
-class Header extends React.Component {
+const Header = () => {
   state = {
     fixed: false,
   };
@@ -29,19 +30,128 @@ class Header extends React.Component {
     return `${fixed} ${homepage}`;
   };
 
-  render() {
+  //styles
+
+  const Sheader = styled.header`
+    align-items: center;
+    justify-content: center;
+    background-color: ${theme.color.neutral.white};
+    display: flex;
+    height: ${theme.header.height.default};
+    position: relative;
+    top: 0;
+    width: 100%;
+    align-items: center;
+
+    @media (min-width: 600){
+      padding: ${theme.space.inset.l};
+    }
+
+    @media (min-width: 1024){
+      align-items: center;
+      background-color: ${theme.color.neutral.white};
+      display: flex;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      justify-content: space-between;
+      transition: padding 0.5s;
+
+      &.fixed {
+        height: ${theme.header.height.fixed};
+        background-color: ${theme.color.neutral.white};
+        left: 0;
+        padding: 0 ${theme.space.m};
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+
+        h1 {
+          margin: ${theme.space.stack.xxs};
+        }
+
+        h2 {
+          display: none;
+        }
+      }
+
+      &.homepage:not(.fixed) {
+        :global(a.logoType),
+        h1 {
+          color: ${theme.color.neutral.white};
+        }
+        h2 {
+          color: ${theme.color.neutral.gray.d};
+        }
+      }
+
+      :global(a.logoType) {
+        text-align: left;
+        flex-direction: row;
+        flex-shrink: 0;
+        width: auto;
+      }
+    }
+
+    :global(a.logoType) {
+      align-items: center;
+      display: flex;
+      flex-direction: "column";
+      color: ${theme.text.color.primary};
+
+      .logo {
+        flex-shrink: 0;
+      }
+    }
+
+    &.homepage {
+      position: absolute;
+      background-color: transparent;
+      height: ${theme.header.height.homepage};
+
+      @media (min-width: 600){
+        height: ${theme.header.height.homepage};
+      }
+
+      @media (max-width: 1024){
+        .logo{
+          border: none;
+        }
+      }
+    }
+  `
+
+  const H1 = styled.h1`
+    font-size: ${theme.font.size.m};
+    font-weight: ${theme.font.weight.standard};
+    margin: ${theme.space.stack.xs};
+  `
+
+  const Sensor = styled.div`
+    display: block;
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    height: 1px;
+    top: ${path === "/" ? theme.header.height.homepage : theme.header.height.default};
+  `
+
+  // render() {
     const { pages, path, theme } = this.props;
     const { fixed } = this.state;
 
     return (
       <React.Fragment>
-        <header className={`header ${this.getHeaderSize()}`}>
+        <Sheader className={`header ${this.getHeaderSize()}`}>
           <Link to="/" className="logoType">
             {/* <div className="logo"> */}
               {/* <img src={config.gravatarImgMd5=="" ? avatar : config.gravatarImgMd5 } alt={config.siteTitle} /> */}
             {/* </div> */}
             <div className="type">
-              <h1>{config.headerTitle}</h1>
+              <H1>{config.headerTitle}</H1>
               {/* <h2>{config.headerSubTitle}</h2> */}
             </div>
           </Link>
@@ -61,13 +171,13 @@ class Header extends React.Component {
               </ScreenWidthContext.Consumer>
             )}
           </FontLoadedContext.Consumer>
-        </header>
+        </Sheader>
         <VisibilitySensor onChange={this.visibilitySensorChange}>
-          <div className="sensor" />
+          <Sensor className="sensor" />
         </VisibilitySensor>
 
         {/* --- STYLES --- */}
-        <style jsx>{`
+        {/* <style jsx>{`
           .header {
             align-items: center;
             justify-content: center;
@@ -249,10 +359,10 @@ class Header extends React.Component {
               }
             }
           }
-        `}</style>
+        `}</style> */}
       </React.Fragment>
     );
-  }
+  // }
 }
 
 Header.propTypes = {
