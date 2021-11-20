@@ -42,21 +42,89 @@ const ComicPage = () => {
       separator.current.scrollIntoView({ block: "start", behavior: "smooth" });
     };
 
+    // Styles
+
+    const HR = styled.hr`
+        opacity: 0;
+    `;
+
+    const Div = styled.div`
+        text-align: center;
+        padding-top: 25vh;
+        margin: 0 0 50vh 0;
+    `;
+
+    const MobileWarn = styled.h1`
+        display:none;
+    `;
+
+    const Comics = styled.ul`
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; 
+    `
+
+    const Button = styled.button`
+        background: rgb(0, 0, 0, 0);
+        border: none;
+        border-radius: 50%;
+        font-size: 1.35em;
+        padding: 10px 20px;
+        cursor: pointer;
+        width: 80px;
+        height: 80px;
+
+        &:focus{
+            outline-style: none;
+        }
+      
+        :global(svg) {
+            position: relative;
+            top: 5px;
+            fill: black;
+            stroke-width: 40;
+            stroke: #ffffff;
+            animation-duration: 1s;
+            animation-name: buttonIconMove;
+            animation-iteration-count: infinite;
+        }    
+
+        @keyframes buttonIconMove {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+        
+        @media only screen and (max-width: 812px){
+            .mobile-warn{
+                display: block;
+                margin-bottom: 2vh;
+            }
+        }
+    `
+
     return (<Fragment>
-                    <ul id='comics'>
-                        <div className='xkcd-header'>
-                            <h1 className='mobile-warn'>NOTE: This experiment currently incompatible with mobile.</h1>
+                    <Comics id='comics'>
+                        <Div className='xkcd-header'>
+                            <MobileWarn className='mobile-warn'>NOTE: This experiment currently incompatible with mobile.</MobileWarn>
                             <h1>Scroll Down</h1>
-                            <button onClick={scrollToContent} aria-label="scroll">
+                            <Button onClick={scrollToContent} aria-label="scroll">
                                 <FaChevronDown />
-                            </button>
-                        </div>
-                        <hr ref={separator} />
+                            </Button>
+                        </Div>
+                        <HR ref={separator} />
                         {infiniteXKCD()}
-                    </ul>
+                    </Comics>
 
         {/* STYLES */}
-        <style jsx>{`
+        {/* <style jsx>{`
             hr {
                 opacity: 0;
             }
@@ -123,7 +191,7 @@ const ComicPage = () => {
                 }
             }
         `}
-        </style>
+        </style> */}
     </Fragment>)
 }
 

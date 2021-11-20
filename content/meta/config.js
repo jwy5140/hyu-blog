@@ -1,7 +1,7 @@
 module.exports = {
   siteTitle: "Hana Yu", // <title>
   shortSiteTitle: "Hana Yu", // <title> ending for posts and pages
-  siteDescription: "A student and developer's personal blog.",
+  // siteDescription: "A student and developer's personal blog.",
   siteUrl: "https://jayewe.com",
   // pathPrefix: "",
   siteImage: "preview.jpg",
