@@ -50,7 +50,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     
-    `gatsby-plugin-webpack-bundle-analyser-v2`,
+    // `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-styled-jsx`, // the plugin's code is inserted directly to gatsby-node.js and gatsby-ssr.js files
     // `gatsby-plugin-styled-jsx-postcss`, // as above
     'gatsby-plugin-styled-components',
@@ -228,13 +228,13 @@ module.exports = {
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.fields.prefix,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }]
+              return allMarkdownRemark.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.excerpt,
+                  date: node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  custom_elements: [{ "content:encoded": node.html }]
                 });
               });
             },
@@ -253,17 +253,15 @@ module.exports = {
                     }
                   }
                 ) {
-                  edges {
-                    node {
-                      excerpt
-                      html
-                      fields {
-                        slug
-                        prefix
-                      }
-                      frontmatter {
-                        title
-                      }
+                  node {
+                    excerpt
+                    html
+                    fields {
+                      slug
+                      prefix
+                    }
+                    frontmatter {
+                      title
                     }
                   }
                 }
