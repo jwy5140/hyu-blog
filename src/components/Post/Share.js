@@ -27,11 +27,44 @@ const PostShare = props => {
   const iconSize = 36;
   const filter = count => (count > 0 ? count : "");
 
+  //styles
+
+  const Share = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width:600){
+      flex-direction: row;
+      margin: ${theme.space.inset.l};
+    }
+  `
+
+  const Links = styled.div`
+    display: flex;
+    flex-direction: row;
+
+    :global(.SocialMediaShareButton) {
+      margin: 0 0.8em;
+      cursor: pointer;
+    }
+  `
+
+  const Label = styled.label`
+    font-size: 1.2em;
+    margin: 0 1em 1em;
+
+    @media (min-width:600){
+      margin: ${theme.space.inline.m};
+    }
+  `
+
   return (
     <React.Fragment>
-      <div className="share">
-        <span className="label">SHARE</span>
-        <div className="links">
+      <Share className="share">
+        <Label className="label">SHARE</Label>
+        <Links className="links">
           <TwitterShareButton
             url={url}
             title={title}
@@ -63,11 +96,11 @@ const PostShare = props => {
           >
             <LinkedinIcon round size={iconSize} />
           </LinkedinShareButton>
-        </div>
-      </div>
+        </Links>
+      </Share>
 
       {/* --- STYLES --- */}
-      <style jsx>{`
+      {/* <style jsx>{`
         .share {
           display: flex;
           flex-direction: column;
@@ -99,7 +132,7 @@ const PostShare = props => {
             margin: ${theme.space.inline.m};
           }
         }
-      `}</style>
+      `}</style> */}
     </React.Fragment>
   );
 };
