@@ -55,7 +55,7 @@ exports.createPages = ({ graphql, actions }) => {
           {
             allMarkdownRemark(
               ` + filters + `
-              sort: { fields: [fields___prefix], order: DESC }
+              sort: { fields: [frontmatter___date], order: DESC }
               limit: 1000
             ) {
               edges {
@@ -150,8 +150,9 @@ exports.createPages = ({ graphql, actions }) => {
 };
 
 exports.onCreateWebpackConfig = ({ stage, actions }, options) => {
-  switch (stage) {
-    case `build-javascript`:
+  // switch (stage) {
+  //   case `build-javascript`:
+  if (stage.startsWith("develop")){
       actions.setWebpackConfig({
         resolve: {
           alias: {
@@ -167,6 +168,8 @@ exports.onCreateWebpackConfig = ({ stage, actions }, options) => {
         //     defaultSizes: "gzip"
         //   })
         // ]
-      // });
-  })}
+      });
+  // })}
+  // }
+    }
 };

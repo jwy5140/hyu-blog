@@ -72,7 +72,7 @@ const Bodytext = props => {
   `
 
   return (
-    <React.Fragment>
+    <Styles>
       <div className="bodytext" dangerouslySetInnerHTML={{ __html: html }} />
 
       {/* <style jsx>{`
@@ -140,7 +140,7 @@ const Bodytext = props => {
           }
         }
       `}</style> */}
-    </React.Fragment>
+    </Styles>
   );
 };
 

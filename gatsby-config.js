@@ -242,7 +242,7 @@ module.exports = {
               {
                 allMarkdownRemark(
                   limit: 1000,
-                  sort: { order: DESC, fields: [fields___prefix] },
+                  sort: { order: DESC, fields: [frontmatter___date] },
                   filter: {
                     fields: {
                       prefix: { ne: null },
@@ -262,6 +262,7 @@ module.exports = {
                     }
                     frontmatter {
                       title
+                      date
                     }
                   }
                 }
