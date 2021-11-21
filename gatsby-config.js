@@ -253,7 +253,7 @@ module.exports = {
                     }
                   }
                 ) {
-                  node {
+                  nodes {
                     excerpt
                     html
                     fields {
@@ -267,7 +267,8 @@ module.exports = {
                 }
               }
             `,
-            output: "/rss.xml"
+            output: "/rss.xml",
+            title: "Hana's Blog Feed",
           }
         ]
       }

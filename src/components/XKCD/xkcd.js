@@ -1,7 +1,7 @@
 import React, { useState, Fragment, useEffect, useRef } from 'react';
 import { FaChevronDown } from "react-icons/fa/";
 import Comic from './comic'
-import uuid from 'uuid/v4'
+import { v4 as uuid } from 'uuid'
 
 const ComicPage = () => {
 
