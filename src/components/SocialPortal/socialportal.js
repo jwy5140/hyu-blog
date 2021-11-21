@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Affix, Icon } from 'antd'
+import { Affix } from 'antd'
+import { GithubFilled } from '@ant-design/icons'
 import RVS from 'react-visibility-sensor'
 
 const SocialPortal = (props) => {
@@ -16,7 +17,7 @@ const SocialPortal = (props) => {
             <RVS onChange={(v)=>setVisible(v)}>
                 <li>
                     <a href="https://github.com/jwy5140" target="_blank">
-                        <Icon type="github" style={{fontSize: "7.5vh", color: "black"}} />
+                        <GithubFilled style={{fontSize: "7.5vh", color: "black"}} />
                     </a>
                 </li>
             </RVS>

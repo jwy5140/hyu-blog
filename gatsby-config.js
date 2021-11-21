@@ -49,7 +49,6 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
-    
     // `gatsby-plugin-webpack-bundle-analyser-v2`,
     `gatsby-plugin-styled-jsx`, // the plugin's code is inserted directly to gatsby-node.js and gatsby-ssr.js files
     // `gatsby-plugin-styled-jsx-postcss`, // as above
@@ -242,7 +241,7 @@ module.exports = {
               {
                 allMarkdownRemark(
                   limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] },
+                  sort: { order: DESC, fields: [frontmatter___title] },
                   filter: {
                     fields: {
                       prefix: { ne: null },
@@ -262,7 +261,6 @@ module.exports = {
                     }
                     frontmatter {
                       title
-                      date
                     }
                   }
                 }
