@@ -1,7 +1,8 @@
 import { Link } from "gatsby";
-import PropTypes from "prop-types";
-import React from "react";
-import VisibilitySensor from "react-visibility-sensor";
+// import PropTypes from "prop-types";
+import React, {useState} from "react";
+// import VisibilitySensor from "react-visibility-sensor";
+import RVS from 'react-visibility-sensor'
 import styled from "styled-components";
 
 import { ScreenWidthContext, FontLoadedContext } from "../../layouts";
@@ -10,22 +11,22 @@ import Menu from "../Menu";
 
 import avatar from "../../images/jpg/avatar.jpg";
 
-const Header = () => {
-  state = {
-    fixed: false,
-  };
+const Header = ({pages, path, theme}) => {
 
-  visibilitySensorChange = val => {
-    if (val) {
-      this.setState({ fixed: false });
-    } else {
-      this.setState({ fixed: true });
-    }
-  };
+  const [fixed, setFixed] = useState(false)
+  // const { pages, path, theme } = props;
 
-  getHeaderSize = () => {
-    const fixed = this.state.fixed ? "fixed" : "";
-    const homepage = this.props.path === "/" ? "homepage" : "";
+  // const visibilitySensorChange = val => {
+    // if (val) {
+      // setFixed(false)
+    // } else {
+      // setFixed(true)
+    // }
+  // };
+
+  const getHeaderSize = () => {
+    let fixed = fixed ? "fixed" : "";
+    const homepage = path === "/" ? "homepage" : "";
 
     return `${fixed} ${homepage}`;
   };
@@ -140,12 +141,11 @@ const Header = () => {
   `
 
   // render() {
-    const { pages, path, theme } = this.props;
-    const { fixed } = this.state;
+    // const { fixed } = this.state;
 
     return (
       <React.Fragment>
-        <Sheader className={`header ${this.getHeaderSize()}`}>
+        <Sheader className={`header ${getHeaderSize()}`}>
           <Link to="/" className="logoType">
             {/* <div className="logo"> */}
               {/* <img src={config.gravatarImgMd5=="" ? avatar : config.gravatarImgMd5 } alt={config.siteTitle} /> */}
@@ -172,9 +172,9 @@ const Header = () => {
             )}
           </FontLoadedContext.Consumer>
         </Sheader>
-        <VisibilitySensor onChange={this.visibilitySensorChange}>
+        <RVS onChange={(v)=>{setFixed(v)}}>
           <Sensor className="sensor" />
-        </VisibilitySensor>
+        </RVS>
 
         {/* --- STYLES --- */}
         {/* <style jsx>{`
@@ -365,10 +365,10 @@ const Header = () => {
   // }
 }
 
-Header.propTypes = {
-  pages: PropTypes.array.isRequired,
-  path: PropTypes.string.isRequired,
-  theme: PropTypes.object.isRequired
-};
+// Header.propTypes = {
+//   pages: PropTypes.array.isRequired,
+//   path: PropTypes.string.isRequired,
+//   theme: PropTypes.object.isRequired
+// };
 
 export default Header;

@@ -5,7 +5,7 @@ import styled from "styled-components";
 const Headline = props => {
   const { title, children, theme } = props;
 
-  const Styles = styled.Fragment`
+  const Styles = styled.span`
     h1 {
     font-size: ${theme.font.size.xxl};
     margin: ${theme.space.stack.l};
