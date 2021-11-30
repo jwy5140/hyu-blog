@@ -40,127 +40,119 @@ const Menu = ({path, fixed, fontLoaded, pages, screenWidth, theme}) => {
     ];
 
     let renderedItems = []; // will contain references to rendered DOM elements of menu
-
-    const Smenu = styled.nav`
-      align-items: center;
-      background: ${theme.color.neutral.white};
-      bottom: 0;
-      display: flex;
-      flex-grow: 1;
-      left: 0;
-      max-height: ${open ? "1000px" : "50px"};
-      padding: 0 ${theme.space.inset.s};
-      position: fixed;
-      width: 100%;
-      z-index: 1;
-      transition: all ${theme.time.duration.default};
-
-      @media (max-width: 1024){
-        &::after {
-          position: absolute;
-          content: "";
-          left: ${theme.space.m};
-          right: ${theme.space.m};
-          top: 0;
-          height: 1px;
-          background: ${theme.color.brand.primary};
-        }
-
-        &.open {
-          padding: ${theme.space.inset.m};
-        }
-
-        :global(.homepage):not(.fixed) & {
-          bottom: -100px;
-        }
-      }
-
-      @media (min-width: 1024){
-        border-top: none;
-        background: transparent;
-        display: flex;
-        position: relative;
-        justify-content: flex-end;
-        padding-left: 50px;
-        transition: none;
-      }
-    `
-
-    const Itemlist = styled.ul`
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      list-style: none;
-      margin: 0;
-      padding: 0; 
-      position: relative;
-      width: 100%;
-
-      @media (min-width: 1024){
-        justify-content: flex-end;
-        padding: 0;
-      }
-    `
-    const Hiddenitemlist = styled.ul`
-      @media (min-width: 1024){
-        list-style: none;
-        margin: 0;
-        position: absolute;
-        background: ${theme.background.color.primary};
-        border: 1px solid ${theme.line.color};
-        top: 48px;
-        right: ${theme.space.s};
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        padding: ${theme.space.m};
-        border-radius: ${theme.size.radius.small};
-        border-top-right-radius: 0;
-
-
-        &:after {
-          content: "";
-          background: ${theme.background.color.primary};
-          z-index: 10;
-          top: -10px;
-          right: -1px;
-          width: 44px;
-          height: 10px;
-          position: absolute;
-          border-left: 1px solid ${theme.line.color};
-          border-right: 1px solid ${theme.line.color};
-        }
-
-        :global(.homepage):not(.fixed) & {
-          border: 1px solid transparent;
-          background: color(white alpha(-10%));
-          top: 50px;
-
-          &:after {
-            top: -11px;
-            border-left: 1px solid transparent;
-            border-right: 1px solid transparent;
-            background: color(white alpha(-10%));
+    const Smenu = styled.span`
+          .menu {
+            align-items: center;
+            background: ${theme.color.neutral.white};
+            bottom: 0;
+            display: flex;
+            flex-grow: 1;
+            left: 0;
+            max-height: ${open ? "1000px" : "50px"};
+            padding: 0 ${theme.space.inset.s};
+            position: fixed;
+            width: 100%;
+            z-index: 1;
+            transition: all ${theme.time.duration.default};
           }
-        }
-      }
+
+          .itemList {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            margin: 0;
+            padding: 0; 
+            position: relative;
+            width: 100%;
+          }
+
+          @media(max-width: 1024px) {
+            .menu {
+              &::after {
+                position: absolute;
+                content: "";
+                left: ${theme.space.m};
+                right: ${theme.space.m};
+                top: 0;
+                height: 1px;
+                background: ${theme.color.brand.primary};
+              }
+
+              &.open {
+                padding: ${theme.space.inset.m};
+              }
+
+              .homepage:not(.fixed) & {
+                bottom: -100px;
+              }
+            }
+          }
+
+          @media (min-width: 1024px) {
+            .menu {
+              border-top: none;
+              background: transparent;
+              display: flex;
+              position: relative;
+              justify-content: flex-end;
+              padding-left: 50px;
+              transition: none;
+            }
+
+            .itemList {
+              justify-content: flex-end;
+              padding: 0;
+            }
+
+            .hiddenItemList {
+              list-style: none;
+              margin: 0;
+              position: absolute;
+              background: ${theme.background.color.primary};
+              border: 1px solid ${theme.line.color};
+              top: 48px;
+              right: ${theme.space.s};
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-start;
+              padding: ${theme.space.m};
+              border-radius: ${theme.size.radius.small};
+              border-top-right-radius: 0;
+
+
+              &:after {
+                content: "";
+                background: ${theme.background.color.primary};
+                z-index: 10;
+                top: -10px;
+                right: -1px;
+                width: 44px;
+                height: 10px;
+                position: absolute;
+                border-left: 1px solid ${theme.line.color};
+                border-right: 1px solid ${theme.line.color};
+              }
+
+              .homepage:not(.fixed) & {
+                border: 1px solid transparent;
+                background: color(white alpha(-10%));
+                top: 50px;
+
+                &:after {
+                  top: -11px;
+                  border-left: 1px solid transparent;
+                  border-right: 1px solid transparent;
+                  background: color(white alpha(-10%));
+                }
+              }
+
+              .fixed & {
+                top: 44px;
+              }
+            }
+          }
     `
-  // }
-
-  // state = {
-  //   open: false,
-  //   hiddenItems: []
-  // };
-
-  // static 
-  // propTypes = {
-  //   path: PropTypes.string.isRequired,
-  //   fixed: PropTypes.bool.isRequired,
-  //   screenWidth: PropTypes.number.isRequired,
-  //   fontLoaded: PropTypes.bool.isRequired,
-  //   pages: PropTypes.array.isRequired,
-  //   theme: PropTypes.object.isRequired
-  // };
 
   useEffect(()=>{
     renderedItems = getRenderedItems();
@@ -273,24 +265,24 @@ const Menu = ({path, fixed, fontLoaded, pages, screenWidth, theme}) => {
     // const { open } = this.state;
 
     return (
-      <React.Fragment>
-        <Smenu className={`menu ${open ? "open" : ""}`} rel="js-menu">
-          <Itemlist className="itemList" ref={itemList}>
+      <Smenu>
+        <nav className={`menu ${open ? "open" : ""}`} rel="js-menu">
+          <ul className="itemList" ref={itemList}>
             {items.map(item => (
               <Item item={item} key={item.label} icon={item.icon} theme={theme} />
             ))}
-          </Itemlist>
+          </ul>
           {hiddenItems.length > 0 && <Expand onClick={toggleMenu} theme={theme} />}
           {open &&
             screenWidth >= 1024 && (
-              <Hiddenitemlist className="hiddenItemList">
+              <ul className="hiddenItemList">
                 {hiddenItems.map(item => (
                   <Item item={item} key={item.label} hiddenItem theme={theme} />
                 ))}
-              </Hiddenitemlist>
+              </ul>
             )}
-        </Smenu>
-      </React.Fragment>
+        </nav>
+      </Smenu>
     );
   // }
 }

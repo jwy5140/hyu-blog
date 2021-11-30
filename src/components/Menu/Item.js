@@ -1,63 +1,61 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import styled from "styled-components";
 
-const Item = ({theme, item, icon, hidden, onClick}) => {
-  // const { theme, item: { label, to, icon: Icon } = {}, onClick } = props;
-  const check = {theme, item, icon, hidden, onClick}
+const Item = props => {
+  const {theme, item: { label, to, icon: Icon } = {}, onClick} = props
 
   const Styles = styled.span`
-    .item,
+    .item
     .showItem {
       background: transparent;
       transition: all ${theme.time.duration.default};
       display: flex;
       align-items: center;
 
-      :global(a) {
+      a {
         padding: ${theme.space.inset.s};
         display: flex;
         align-items: center;
       }
 
-      :global(svg) {
+      svg {
         margin: 0 ${theme.space.inset.xs} 0 0;
         opacity: 0.3;
       }
     }
 
-    :global(.itemList .hideItem) {
+    .itemList .hideItem {
       display: none;
     }
 
-    @media (min-width: 1024) {
+    @media (min-width: 1024px) {
       .item {
-        :global(a) {
+        a {
           color: ${theme.text.color.primary};
           padding: ${theme.space.inset.s};
           transition: all ${theme.time.duration.default};
           border-radius: ${theme.size.radius.small};
         }
 
-        :global(.homepage):not(.fixed) & :global(a) {
+        .homepage:not(.fixed) & a {
           color: ${theme.color.neutral.white};
         }
 
-        :global(a:hover) {
+        a:hover {
           color: ${theme.color.brand.primary};
           background: color(white alpha(-60%));
         }
 
-        :global(svg) {
+        svg {
           transition: all ${theme.time.duration.default};
         }
 
-        &:hover :global(svg) {
+        &:hover svg {
           fill: ${theme.color.brand.primary};
           opacity: 1;
 
-          :global(.hero) & :global(svg) {
+          .here & svg {
             fill: green;
           }
         }
@@ -71,7 +69,7 @@ const Item = ({theme, item, icon, hidden, onClick}) => {
         text-align: left;
         padding: ${theme.space.xs};
 
-        & :global(a.inHiddenItem) {
+        & a.inHiddenItem {
           color: ${theme.text.color.primary};
           &:hover {
             color: ${theme.color.brand.primary};
@@ -83,26 +81,18 @@ const Item = ({theme, item, icon, hidden, onClick}) => {
 
   return (
     <Styles>
-      <li className={"hiddenItem" in check ? "hiddenItem" : "item"} key={item.label}>
+      <li className={"hiddenItem" in props ? "hiddenItem" : "item"} key={label}>
         <Link
-          to={item.to}
-          className={"hiddenItem" in check ? "inHiddenItem" : ""}
+          to={to}
+          className={"hiddenItem" in props ? "inHiddenItem" : ""}
           onClick={onClick}
-          data-slug={item.to}
+          data-slug={to}
         >
-          {icon.Icon} {item.label}
+          {Icon && <Icon />} {label}
         </Link>
       </li>
     </Styles>
   );
 };
-
-// Item.propTypes = {
-//   item: PropTypes.object,
-//   hidden: PropTypes.bool,
-//   onClick: PropTypes.func,
-//   icon: PropTypes.func,
-//   theme: PropTypes.object.isRequired
-// };
 
 export default Item;

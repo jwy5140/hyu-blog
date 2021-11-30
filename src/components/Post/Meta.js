@@ -29,7 +29,7 @@ const Meta = props => {
       margin: ${theme.space.xs} ${theme.space.s} ${theme.space.xs} 0;
     }
 
-    @media (min-width: 600){
+    @media (min-width: 600px){
       margin: ${`calc(${theme.space.m} * 1.5) 0 ${theme.space.m}`};
     }
   `

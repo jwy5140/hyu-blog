@@ -1,7 +1,7 @@
 {
-  "name": "jyu-portfolio",
+  "name": "hyu-portfolio",
   "version": "2.0.0",
-  "author": "Jeffrey Yu <jwy5140@gmail.com>",
+  "author": "Hana Yu <jwy5140@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",

@@ -1,13 +1,39 @@
-import PropTypes from "prop-types";
 import React from "react";
+import styled from "styled-components";
 
 import Item from "./Item";
 
-const Blog = props => {
-  const { posts, theme } = props;
+const Blog = ({posts,theme}) => {
+  // const { posts, theme } = props;
+
+  const Styles = styled.span`
+    .main {
+      padding: 0 ${theme.space.inset.default};
+    }
+
+    ul {
+      list-style: none;
+      margin: 0 auto;
+      padding: ${`calc(${theme.space.default} * 1.5) 0 calc(${theme.space.default} * 0.5)`};
+    }
+
+    @media (min-width: 600px) {
+      .main {
+        padding: 0 ${`0 calc(${theme.space.default} * 1.5)`};
+      }
+      ul {
+        max-width: ${theme.text.maxWidth.tablet};
+      }
+    }
+    @media (min-width: 1024px) {
+      ul {
+        max-width: ${theme.text.maxWidth.desktop};
+      }
+    }
+  `
 
   return (
-    <React.Fragment>
+    <Styles>
       <main className="main">
         <ul>
           {posts.map(post => {
@@ -21,40 +47,9 @@ const Blog = props => {
           })}
         </ul>
       </main>
-
-      {/* --- STYLES --- */}
-      <style jsx>{`
-        .main {
-          padding: 0 ${theme.space.inset.default};
-        }
-
-        ul {
-          list-style: none;
-          margin: 0 auto;
-          padding: ${`calc(${theme.space.default} * 1.5) 0 calc(${theme.space.default} * 0.5)`};
-        }
-
-        @above tablet {
-          .main {
-            padding: 0 ${`0 calc(${theme.space.default} * 1.5)`};
-          }
-          ul {
-            max-width: ${theme.text.maxWidth.tablet};
-          }
-        }
-        @above desktop {
-          ul {
-            max-width: ${theme.text.maxWidth.desktop};
-          }
-        }
-      `}</style>
-    </React.Fragment>
+    </Styles>
   );
 };
 
-Blog.propTypes = {
-  posts: PropTypes.array.isRequired,
-  theme: PropTypes.object.isRequired
-};
 
 export default Blog;
