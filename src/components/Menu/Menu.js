@@ -1,7 +1,5 @@
 import React, {useState, useEffect, useRef} from "react";
-// import PropTypes from "prop-types";
 import styled from "styled-components";
-// require("core-js/fn/array/from");
 
 import { FaHome, FaSearch, FaEnvelope, FaListAlt, FaPortrait, FaCode, FaLaughBeam } from "react-icons/fa/";
 

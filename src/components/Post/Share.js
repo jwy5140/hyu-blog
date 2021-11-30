@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from 'styled-components';
 
 import {
@@ -30,43 +29,45 @@ const PostShare = props => {
   const filter = count => (count > 0 ? count : "");
 
   //styles
+  const Styles = styled.span`
+    .share {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-  const Share = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    @media (min-width:600){
+    .links {
+      display: flex;
       flex-direction: row;
-      margin: ${theme.space.inset.l};
+
+      .SocialMediaShareButton {
+        margin: 0 0.8em;
+        cursor: pointer;
+      }
     }
-  `
 
-  const Links = styled.div`
-    display: flex;
-    flex-direction: row;
-
-    :global(.SocialMediaShareButton) {
-      margin: 0 0.8em;
-      cursor: pointer;
+    .label {
+      font-size: 1.2em;
+      margin: 0 1em 1em;
     }
-  `
 
-  const Label = styled.label`
-    font-size: 1.2em;
-    margin: 0 1em 1em;
-
-    @media (min-width:600){
-      margin: ${theme.space.inline.m};
+    @media (min-width: 800px) {
+      .share {
+        flex-direction: row;
+        margin: ${theme.space.inset.l};
+      }
+      .label {
+        margin: ${theme.space.inline.m};
+      }
     }
   `
 
   return (
-    <React.Fragment>
-      <Share className="share">
-        <Label className="label">SHARE</Label>
-        <Links className="links">
+    <Styles>
+      <div className="share">
+        <span className="label">SHARE</span>
+        <div className="links">
           <TwitterShareButton
             url={url}
             title={title}
@@ -98,50 +99,10 @@ const PostShare = props => {
           >
             <LinkedinIcon round size={iconSize} />
           </LinkedinShareButton>
-        </Links>
-      </Share>
-
-      {/* --- STYLES --- */}
-      {/* <style jsx>{`
-        .share {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .links {
-          display: flex;
-          flex-direction: row;
-
-          :global(.SocialMediaShareButton) {
-            margin: 0 0.8em;
-            cursor: pointer;
-          }
-        }
-
-        .label {
-          font-size: 1.2em;
-          margin: 0 1em 1em;
-        }
-
-        @from-width tablet {
-          .share {
-            flex-direction: row;
-            margin: ${theme.space.inset.l};
-          }
-          .label {
-            margin: ${theme.space.inline.m};
-          }
-        }
-      `}</style> */}
-    </React.Fragment>
+        </div>
+      </div>
+    </Styles>
   );
-};
-
-PostShare.propTypes = {
-  post: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired
 };
 
 export default PostShare;

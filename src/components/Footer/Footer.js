@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Footer = ({html, theme}) => {
-  // const { html, theme } = props;
+const Footer = props => {
+  const { html, theme } = props;
 
   const Styles = styled.span`
     .footer {
@@ -37,7 +36,7 @@ const Footer = ({html, theme}) => {
       }
     }
 
-    @media (min-width: 1024) {
+    @media (min-width: 1024px) {
       .footer {
         padding: 0 1em 1.5em;
       }
@@ -47,15 +46,9 @@ const Footer = ({html, theme}) => {
   return (
     <Styles>
       <footer className="footer" dangerouslySetInnerHTML={{ __html: html }} />
-
-      {/* --- STYLES --- */}
     </Styles>
   );
 };
 
-Footer.propTypes = {
-  html: PropTypes.string,
-  theme: PropTypes.object.isRequired
-};
 
 export default Footer;

@@ -6,7 +6,7 @@ const Item = props => {
   const {theme, item: { label, to, icon: Icon } = {}, onClick} = props
 
   const Styles = styled.span`
-    .item
+    .item,
     .showItem {
       background: transparent;
       transition: all ${theme.time.duration.default};
@@ -44,7 +44,7 @@ const Item = props => {
 
         a:hover {
           color: ${theme.color.brand.primary};
-          background: color(white alpha(-60%));
+          background: rgba(255,255,255,.6);
         }
 
         svg {

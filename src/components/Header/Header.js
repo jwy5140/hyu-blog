@@ -10,10 +10,10 @@ import Menu from "../Menu";
 
 import avatar from "../../images/jpg/avatar.jpg";
 
-const Header = ({pages, path, theme}) => {
+const Header = props => {
 
   const [fixed, setFixed] = useState(false)
-  // const { pages, path, theme } = props;
+  const { pages, path, theme } = props;
 
   // const visibilitySensorChange = val => {
     // if (val) {
@@ -255,11 +255,5 @@ const Header = ({pages, path, theme}) => {
     );
   // }
 }
-
-// Header.propTypes = {
-//   pages: PropTypes.array.isRequired,
-//   path: PropTypes.string.isRequired,
-//   theme: PropTypes.object.isRequired
-// };
 
 export default Header;
