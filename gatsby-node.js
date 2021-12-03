@@ -153,11 +153,11 @@ exports.onCreateWebpackConfig = ({ stage, actions }, options) => {
   switch (stage) {
     case `build-javascript`:
       actions.setWebpackConfig({
-        // resolve: {
-        //   alias: {
-        //     'react-dom': '@hot-loader/react-dom'
-        //   }
-        // },
+        resolve: {
+          alias: {
+            'react-dom': '@hot-loader/react-dom'
+          }
+        },
         // plugins: [
         //   new BundleAnalyzerPlugin({
         //     analyzerMode: "static",
