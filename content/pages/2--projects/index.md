@@ -27,7 +27,10 @@ Ideally, would like to create a new npm package for calendars in the future.
 
 <a href='https://groceries.hanayu.codes' target='_blank'><img src='./groceries.png' alt='Groceries'/></a>
 
-Not much more than a simple landing/login page right now - the idea is to allow uploading of recipe PDFs and automatically creating a grocery list from it.
+Very barebones project right now. The linked version is to a JavaScript/React frontend, Python/Django backend project.
+There is also a JavaScript/React frontend, JavaScript/Express backend version that may be found on my github.
+This project will be developed as one which allows logins to create grocery lists for favored recipes.
+However, I eventually want to turn it into a project which intakes PDFs of recipes and crafts grocery lists from those PDFs. 
 
 <a href='https://groceries.hanayu.codes' target='_blank'>Live Link</a> | <a href='https://github.com/moriie/grocery_list' target='_blank'>Github Repo</a>
 
